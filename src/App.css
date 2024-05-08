@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.App-table{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+table{
+  margin-top: 32px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+tbody, thead, th, tr, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+}

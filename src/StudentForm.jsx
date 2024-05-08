@@ -12,9 +12,9 @@ export const StudentForm = () => {
     const handleCheck = (event) => {
         var updatedList = [...selectedLanguage];
         if (event.target.checked) {
-        updatedList = [...selectedLanguage, event.target.value+", "];
+            updatedList = [...selectedLanguage, event.target.value+", "];
         } else {
-        updatedList.splice(selectedLanguage.indexOf(event.target.value), 1);
+            updatedList.splice(selectedLanguage.indexOf(event.target.value), 1);
         }
         setLanguage(updatedList);
     };
@@ -30,20 +30,21 @@ export const StudentForm = () => {
     }
 
     return <div>
-        <h1>Student Registration Form</h1>
+        <h1>Student Details</h1>
 
-        <label>Name: </label>
-        <input 
+        <label className="labelCls">Name:</label>
+        <input className="inputCls"
             id="name" 
             name="name"
             type="text" 
             maxLength={"100"}
             value={studentContext.form.name}
-            onChange={(e) => studentContext.setForm({...studentContext.form, name: e.target.value})}>
+            onChange={(e) => studentContext.setForm({...studentContext.form, name: e.target.value})}
+            placeholder="Enter name">
         </input>
         <br/>
-        <label>Age: </label>
-        <input 
+        <label className="labelCls">Age:</label>
+        <input className="inputCls"
             id="age" 
             type="number"
             name="age"
@@ -51,63 +52,70 @@ export const StudentForm = () => {
             onChange={(e) => studentContext.setForm({...studentContext.form, age: e.target.value})} 
             min={1} 
             max={110} 
-            maxLength={3}>
+            maxLength={3}
+            placeholder="Enter age">
         </input>
         <br/>
-        <label>DOB: </label>
-        <input 
+        <label className="labelCls">DOB:</label>
+        <input className="inputCls"
             id="dob" 
             type="date"
             name="date"
             value={studentContext.form.date}
-            onChange={(e) => studentContext.setForm({...studentContext.form, date: e.target.value})}>
+            onChange={(e) => studentContext.setForm({...studentContext.form, date: e.target.value})}
+            placeholder="Enter date of birth">
         </input>
         <br/>
-        <label>Languages:</label>
-        {languageList.map((item, index) => (
-          <div key={index}>
-            <input 
-                value={item} 
-                type="checkbox" 
-                onChange={handleCheck}
-                >
-            </input>
-            <label>{item}</label>
-          </div>
-        ))}
+        <label className="labelCls">Languages:</label>
+        <div className="inputCls">
+            {languageList.map((item, index) => (
+            <span key={index}>
+                <input 
+                    value={item} 
+                    type="checkbox" 
+                    onChange={handleCheck}
+                    >
+                </input>
+                <label>{item}</label>
+            </span>
+            ))}
+        </div>
         <br/>
-        <label for="city">City: </label>
-        <select 
-            id="city"
-            name="city"
-            value={studentContext.form.city}
-            onChange={(e) => studentContext.setForm({...studentContext.form, city: e.target.value})}>
-            <option value="select">--select--</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Bangaluru">Bangaluru</option>
-            <option value="Mumbai">Mumbai</option>
-        </select>
+        <label for="city" className="labelCls">City:</label>
+        <div className="inputCls">
+            <select className="selectCls"
+                id="city"
+                name="city"
+                value={studentContext.form.city}
+                onChange={(e) => studentContext.setForm({...studentContext.form, city: e.target.value})}>
+                <option value="select">--select city--</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangaluru">Bangaluru</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
         <br/>
-        <label>Gender:</label>
-        <div onChange={getRadioButtonValue}>
+        <label className="labelCls">Gender:</label>
+        <div onChange={getRadioButtonValue} className="inputCls">
             <input type="radio" id="rd1" name="gender" value="Male" checked={gender === "Male"}></input>
-            <label for="rd1" style={{paddingRight: "5px"}}>Male</label>
+            <label for="rd1">Male</label>
             <input type="radio" id="rd2" name="gender" value="Female" checked={gender === "Female"}></input>
             <label for="rd2">Female</label>
         </div>
         <br/>
-        <label>Comments:</label>
-        <input 
-            type="text" 
+        <label className="labelCls">Comments:</label>
+        <textarea className="inputCls"
             id="comment" 
             name="comment"
             value={studentContext.form.comment}
             onChange={(e) => studentContext.setForm({...studentContext.form, comment: e.target.value})}
-            style={{width:"300px", height:"200px", textWrap:"wrap"}}>
-        </input>
+            style={{width:"450px", height:"200px", textWrap:"wrap"}}
+            placeholder="Enter your comments">
+        </textarea>
         <br/>
-        <button id="submit" onClick={btnSubmitClick}>Submit</button>
+        <br/>
+        <button id="submit" onClick={btnSubmitClick} style={{fontWeight: "bold"}}>Submit</button>
 
         <hr></hr>
 

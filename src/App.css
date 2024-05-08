@@ -57,3 +57,27 @@ tbody, thead, th, tr, td {
 th, td {
   padding: 8px;
 }
+
+.labelCls {
+  display: inline-block;
+  text-align: right;
+  vertical-align: top;
+  padding: 5px;
+  width: 10%;
+}
+
+.inputCls {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  padding: 5px;
+  width: 30%;
+}
+
+.selectCls {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  padding: 5px;
+  width: 101%;
+}
